@@ -1,6 +1,10 @@
-export interface Currencies {
+export interface Currency {
     ccy: string;
     base_ccy: string;
     buy: string;
     sale: string;
+}
+
+export interface GetCurrencies {
+    type: string;
 }

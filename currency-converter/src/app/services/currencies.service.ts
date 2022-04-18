@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Currencies } from '../models/currencies.model';
+import { Currency } from '../models/currencies.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -13,8 +13,9 @@ export class CurrenciesService {
   /**
    * This method get currencies
    */
-   getCurrencies(): Observable<Currencies> {
-    return this.http.get<Currencies>(`/p24api/pubinfo?json&exchange&coursid=5`);
+   getCurrencies(): Observable<Currency[]> {
+     console.log('terst');
+    return this.http.get<Currency[]>(`/p24api/pubinfo?json&exchange&coursid=5`);
   }
 
 }
