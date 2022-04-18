@@ -14,8 +14,7 @@ export class CurrenciesService {
    * This method get currencies
    */
    getCurrencies(): Observable<Currency[]> {
-     console.log('terst');
-    return this.http.get<Currency[]>(`/p24api/pubinfo?json&exchange&coursid=5`);
+    return this.http.get<Currency[]>(`https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5`);
   }
 
 }
