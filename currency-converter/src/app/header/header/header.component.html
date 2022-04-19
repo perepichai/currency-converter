@@ -1,7 +1,7 @@
 <header class="header">
-    <mat-toolbar>
-        <div *ngFor="let currency of currencies">
-            <div class="usd"><span>{{currency.ccy}}</span> <span>{{currency.buy}}</span></div>
+    <mat-toolbar class="items">
+        <div *ngFor="let currency of currencies" class="item">
+            <div class="usd"><span>{{currency.ccy}} </span> <span>{{currency.buy}}/{{currency.sale}}</span></div>
         </div>
       </mat-toolbar>
     
