@@ -31,7 +31,6 @@ export class CurrenciesState {
     
     @Action(GetCurrencies)
     getCurrencies({ patchState }: StateContext<CurrenciesStateModel>, { }: GetCurrencies): Observable<Currency[]> {
-      console.log('works!!')
       return this.currenciesService.getCurrencies().pipe(
         tap((currencies: Currency[]) => patchState({ currencies: currencies })));
     }

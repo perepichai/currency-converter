@@ -10,6 +10,8 @@ import { CurrenciesState } from './store/currencies.state';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { environment } from 'src/environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import { environment } from 'src/environments/environment';
     HeaderComponent
   ],
   imports: [
+    SharedModule,
     HttpClientModule,
     StoreModule.forRoot([]),
     NgxsModule.forRoot([CurrenciesState], {
@@ -25,6 +28,7 @@ import { environment } from 'src/environments/environment';
     BrowserModule,
     StoreDevtoolsModule.instrument(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
