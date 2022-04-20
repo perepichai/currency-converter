@@ -20,7 +20,7 @@
     
                 <mat-form-field appearance="fill">
                     <mat-label>Currency</mat-label>
-                    <mat-select [formControl]="currencyFirst" [(ngModel)]="selectedFirstCurrency">
+                    <mat-select [formControl]="currencyFirst" [(ngModel)]="selectedFirstCurrency" (selectionChange)="onChangeFirstCurrency()">
                       <mat-option *ngFor="let currency of rates" [value]="currency.ccy">
                         {{currency.ccy}}
                       </mat-option>
@@ -41,7 +41,7 @@
     
                   <mat-form-field appearance="fill">
                     <mat-label>Currency</mat-label>
-                    <mat-select [formControl]="currencySecond" [(ngModel)]="selectedSecondCurrency">
+                    <mat-select [formControl]="currencySecond" [(ngModel)]="selectedSecondCurrency" (selectionChange)="onChangeSecondCurrency()">
                       <mat-option *ngFor="let currency of rates" [value]="currency.ccy">
                         {{currency.ccy}}
                       </mat-option>
