@@ -14,14 +14,14 @@
             <form class="example-form" >
                 <mat-form-field class="full-width" appearance="fill">
                   <mat-label>Quantity</mat-label>
-                  <input type="number" matInput placeholder="10" [formControl]="quantityFrom" (change)="onChangeFrom()">
+                  <input type="number" matInput placeholder="10" [formControl]="quantityFirst" (change)="onChangeFirstCurrency()">
                   <mat-icon matSuffix>money</mat-icon>
                 </mat-form-field>
     
                 <mat-form-field appearance="fill">
                     <mat-label>Currency</mat-label>
-                    <mat-select [formControl]="currencyFrom">
-                      <mat-option *ngFor="let currency of currencies" [value]="currency.ccy">
+                    <mat-select [formControl]="currencyFirst" [(ngModel)]="selectedFirstCurrency">
+                      <mat-option *ngFor="let currency of rates" [value]="currency.ccy">
                         {{currency.ccy}}
                       </mat-option>
                     </mat-select>
@@ -35,14 +35,14 @@
             <form class="example-form" >
                 <mat-form-field class="full-width" appearance="fill">
                   <mat-label>Quantity</mat-label>
-                  <input type="number" matInput placeholder="10" [formControl]="quantityTo" (change)="onChangeTo()">
+                  <input type="number" matInput placeholder="10" [formControl]="quantitySecond" (change)="onChangeSecondCurrency()">
                   <mat-icon matSuffix>money</mat-icon>
                 </mat-form-field>
     
                   <mat-form-field appearance="fill">
                     <mat-label>Currency</mat-label>
-                    <mat-select [formControl]="currencyTo">
-                      <mat-option *ngFor="let currency of currencies" [value]="currency.ccy">
+                    <mat-select [formControl]="currencySecond" [(ngModel)]="selectedSecondCurrency">
+                      <mat-option *ngFor="let currency of rates" [value]="currency.ccy">
                         {{currency.ccy}}
                       </mat-option>
                     </mat-select>

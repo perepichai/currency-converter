@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { Select } from '@ngxs/store';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { Currency } from 'src/app/models/currencies.model';
+import { Currencies } from 'src/app/shared/enum/currencies';
 import { GetCurrencies } from 'src/app/store/currencies.actions';
 import { CurrenciesState } from 'src/app/store/currencies.state';
 
@@ -15,32 +16,42 @@ import { CurrenciesState } from 'src/app/store/currencies.state';
 export class MainComponent implements OnInit {
   @Select(CurrenciesState.currencies)
   currencies$!: Observable<Currency[]>;
-  currencies: Currency[] = [];
+  rates: Currency[] = [];
+  selectedFirstCurrency = Currencies.usd;
+  selectedSecondCurrency = Currencies.eur;
   private destroy$: Subject<boolean> = new Subject<boolean>();
 
-  quantityFrom = new FormControl(0);
-  quantityTo = new FormControl(0);
-  currencyFrom = new FormControl('');
-  currencyTo = new FormControl('');
+  quantityFirst = new FormControl(0);
+  quantitySecond = new FormControl(0);
+  currencyFirst = new FormControl('');
+  currencySecond = new FormControl('');
 
   constructor( private store: Store) { }
 
   ngOnInit(): void {
     this.currencies$.pipe(
       takeUntil(this.destroy$),
-    ).subscribe(currencies => this.currencies = currencies);
+    ).subscribe(rates => this.rates = rates);
     this.store.dispatch(new GetCurrencies());
   }
 
-  onChangeFrom(): void {
-    const value = this.quantityFrom.value;
-    const currency = this.currencyFrom.value;
-    this.quantityTo.setValue(value);
+  onChangeFirstCurrency(): void {
+    const value: number = +this.quantityFirst.value;
+    const result: number = this.calculate(value, false)
+    this.quantitySecond.setValue(result);
   }
-  onChangeTo(): void {
-    const value = this.quantityTo.value;
-    const currency = this.currencyTo.value;
-    this.quantityFrom.setValue(value);
+  onChangeSecondCurrency(): void {
+    const value: number = this.quantitySecond.value;
+    const result: number = this.calculate(value, true)
+    this.quantityFirst.setValue(result);
+  }
+
+  calculate(value: number, isRevert: boolean): number {
+    const firstCurrencyName = this.currencyFirst.value;
+    const secondCurrencyName = this.currencySecond.value;
+    const firstRateSale = +(this.rates.find(currency => currency.ccy === firstCurrencyName)?.sale || 0);
+    const secondRateSale = +(this.rates.find(currency => currency.ccy === secondCurrencyName)?.sale || 0);
+    return isRevert ? value*(secondRateSale/firstRateSale) : value*(firstRateSale/secondRateSale)
   }
 
 }
