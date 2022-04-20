@@ -5,7 +5,7 @@
             <form class="example-form" >
                 <mat-form-field class="full-width" appearance="fill">
                   <mat-label>Quantity</mat-label>
-                  <input type="number" matInput placeholder="10">
+                  <input type="number" matInput placeholder="10" [formControl]="quantityFrom" (change)="onChangeFrom()">
                   <mat-icon matSuffix>money</mat-icon>
                 </mat-form-field>
     
@@ -26,7 +26,7 @@
             <form class="example-form" >
                 <mat-form-field class="full-width" appearance="fill">
                   <mat-label>Quantity</mat-label>
-                  <input type="number" matInput placeholder="10">
+                  <input type="number" matInput placeholder="10" [formControl]="quantityTo" (change)="onChangeTo()">
                   <mat-icon matSuffix>money</mat-icon>
                 </mat-form-field>
     

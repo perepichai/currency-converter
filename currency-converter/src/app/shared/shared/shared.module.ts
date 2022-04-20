@@ -6,6 +6,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -19,6 +20,8 @@ import {MatCardModule} from '@angular/material/card';
     MatIconModule,
     MatSelectModule,
     MatCardModule,
+    FormsModule,
+    ReactiveFormsModule,
     
   ],
   exports: [
@@ -28,6 +31,8 @@ import {MatCardModule} from '@angular/material/card';
     MatIconModule,
     MatSelectModule,
     MatCardModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }
