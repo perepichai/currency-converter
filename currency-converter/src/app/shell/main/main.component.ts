@@ -5,13 +5,15 @@ import { Select } from '@ngxs/store';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { Currency } from 'src/app/models/currencies.model';
 import { Currencies } from 'src/app/shared/enum/currencies';
+import { RoundPipe } from 'src/app/shared/pipe/round.pipe';
 import { GetCurrencies } from 'src/app/store/currencies.actions';
 import { CurrenciesState } from 'src/app/store/currencies.state';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.scss'],
+  providers: [RoundPipe]
 })
 export class MainComponent implements OnInit {
   @Select(CurrenciesState.currencies)
@@ -26,7 +28,7 @@ export class MainComponent implements OnInit {
   currencyFirst = new FormControl('');
   currencySecond = new FormControl('');
 
-  constructor( private store: Store) { }
+  constructor( private store: Store, private pipe: RoundPipe) { }
 
   ngOnInit(): void {
     this.currencies$.pipe(
@@ -51,7 +53,8 @@ export class MainComponent implements OnInit {
     const secondCurrencyName = this.currencySecond.value;
     const firstRateSale = +(this.rates.find(currency => currency.ccy === firstCurrencyName)?.sale || 0);
     const secondRateSale = +(this.rates.find(currency => currency.ccy === secondCurrencyName)?.sale || 0);
-    return isRevert ? value*(secondRateSale/firstRateSale) : value*(firstRateSale/secondRateSale)
+    const rate = isRevert ? (secondRateSale/firstRateSale) : (firstRateSale/secondRateSale);
+    return this.pipe.transform(rate*value);
   }
 
 }
