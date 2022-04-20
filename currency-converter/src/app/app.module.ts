@@ -15,13 +15,15 @@ import { SharedModule } from './shared/shared/shared.module';
 import { MainComponent } from './shell/main/main.component';
 import { FooterComponent } from './footer/footer/footer.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { RoundPipe } from './shared/pipe/round.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     MainComponent,
-    FooterComponent
+    FooterComponent,
+    RoundPipe
   ],
   imports: [
     SharedModule,
