@@ -1,24 +1,15 @@
-<div fxLayout="row" fxLayoutAlign="space-between">
+<div fxLayout="row" fxLayoutAlign="center center" class="main">
     <div fxFlex="20"></div>
     <div fxFlex="80" fxLayoutAlign="center" fxLayoutGap="3rem">
-        <div>
-            <h3>Main functionality in progress. Will be finish 20.04.2022 19:00</h3>
-            <h4>Tasks:</h4>
-            <ul>
-                <li>exchange functionality</li>
-                <li>pipe for the header</li>
-                <li>style preparation</li>
-            </ul>
-        </div>
-        <div fxLayout="row" fxLayoutAlign="space-between">
-            <form class="example-form" >
-                <mat-form-field class="full-width" appearance="fill">
+        <div fxLayout="row" fxLayoutAlign="center center" class="wrapper">
+            <form class="form" >
+                <mat-form-field class="field" appearance="fill">
                   <mat-label>Quantity</mat-label>
                   <input type="number" matInput placeholder="10" [formControl]="quantityFirst" (change)="onChangeFirstCurrency()">
                   <mat-icon matSuffix>money</mat-icon>
                 </mat-form-field>
     
-                <mat-form-field appearance="fill">
+                <mat-form-field appearance="fill" class="field">
                     <mat-label>Currency</mat-label>
                     <mat-select [formControl]="currencyFirst" [(ngModel)]="selectedFirstCurrency" (selectionChange)="onChangeFirstCurrency()">
                       <mat-option *ngFor="let currency of rates" [value]="currency.ccy">
@@ -31,15 +22,15 @@
               </form>
         </div>
 
-        <div fxLayout="row" fxLayoutAlign="space-between">
-            <form class="example-form" >
-                <mat-form-field class="full-width" appearance="fill">
+        <div fxLayout="row" fxLayoutAlign="center center">
+            <form class="form" >
+                <mat-form-field class="field" appearance="fill">
                   <mat-label>Quantity</mat-label>
                   <input type="number" matInput placeholder="10" [formControl]="quantitySecond" (change)="onChangeSecondCurrency()">
                   <mat-icon matSuffix>money</mat-icon>
                 </mat-form-field>
     
-                  <mat-form-field appearance="fill">
+                  <mat-form-field appearance="fill" class="field">
                     <mat-label>Currency</mat-label>
                     <mat-select [formControl]="currencySecond" [(ngModel)]="selectedSecondCurrency" (selectionChange)="onChangeSecondCurrency()">
                       <mat-option *ngFor="let currency of rates" [value]="currency.ccy">

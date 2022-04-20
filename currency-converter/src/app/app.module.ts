@@ -23,7 +23,7 @@ import { RoundPipe } from './shared/pipe/round.pipe';
     HeaderComponent,
     MainComponent,
     FooterComponent,
-    RoundPipe
+    RoundPipe,
   ],
   imports: [
     SharedModule,
