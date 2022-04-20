@@ -20,6 +20,8 @@ export class MainComponent implements OnInit {
 
   quantityFrom = new FormControl(0);
   quantityTo = new FormControl(0);
+  currencyFrom = new FormControl('');
+  currencyTo = new FormControl('');
 
   constructor( private store: Store) { }
 
@@ -32,10 +34,12 @@ export class MainComponent implements OnInit {
 
   onChangeFrom(): void {
     const value = this.quantityFrom.value;
+    const currency = this.currencyFrom.value;
     this.quantityTo.setValue(value);
   }
   onChangeTo(): void {
     const value = this.quantityTo.value;
+    const currency = this.currencyTo.value;
     this.quantityFrom.setValue(value);
   }
 
