@@ -1,1 +1,40 @@
-<p>main works!</p>
+<div fxLayout="row" fxLayoutAlign="space-between">
+    <div fxFlex="20"></div>
+    <div fxFlex="80" fxLayoutAlign="center">
+        <form class="example-form" >
+
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Quantity</mat-label>
+              <!-- <span matPrefix>+1 &nbsp;</span> -->
+              <input type="number" matInput placeholder="10">
+              <mat-icon matSuffix>money</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Currency From</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let currency of currencies" [value]="currency.ccy">
+                    {{currency.ccy}}
+                  </mat-option>
+                </mat-select>
+                <mat-icon matSuffix>attach_money</mat-icon>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Currency To</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let currency of currencies" [value]="currency.ccy">
+                    {{currency.ccy}}
+                  </mat-option>
+                </mat-select>
+                <mat-icon matSuffix>attach_money</mat-icon>
+              </mat-form-field>
+
+          </form>
+          
+    </div>
+    <div fxFlex="20"></div>
+</div>
+<div fxLayout="row" fxLayoutAlign="space-between">
+    <mat-card><mat-icon matSuffix>money</mat-icon> Result</mat-card>
+</div>
